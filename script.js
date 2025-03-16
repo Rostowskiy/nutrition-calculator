@@ -50,5 +50,28 @@ form.addEventListener('submit', function(e) {
    }
    
    carbs = (targetCalories - (protein * 4 + fats * 9)) / 4;
+
+   const resultHTML = `
+   <div class='result-container>
+   <h2>Результаты для ${name}</h2>
+    <div class='result-section'>
+        <h3>Основные показатели:</h3>
+        <p>Базовый обмен веществ (сколько организм потребляет на поддержание жизнедеятельности): ${Math.round(bmr)} ккал</p>
+        <p>Ваша суточная норма с учетом активности: ${Math.round(tdee)} ккал</p>
+        <p>Сколько нужно есть в зависимости от вашей цели: ${Math.round(targetCalories)} ккал</p>
+        </div>
+    <div class='result-section'>
+        <h3>Рекомендация по БЖУ:</h3>
+        <p>Белки: ${Math.round(protein)}г</p>
+        <p>Жиры: ${Math.round(fats)}г</p>
+        <p>Углеводы: ${Math.round(carbs)}г</p>
+        </div>
+    </div>
+   `;
+   const oldResult = document.querySelector('result-container');
+   if (oldResult) {
+    oldResult.remove();
+   }
+   form.insertAdjacentHTML('afterend', resultHTML);
 });
 });
