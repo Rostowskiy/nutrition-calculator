@@ -52,7 +52,7 @@ form.addEventListener('submit', function(e) {
    carbs = (targetCalories - (protein * 4 + fats * 9)) / 4;
 
    const resultHTML = `
-   <div class='result-container>
+   <div class="result-container">
    <h2>Результаты для ${name}</h2>
     <div class='result-section'>
         <h3>Основные показатели:</h3>
@@ -68,7 +68,7 @@ form.addEventListener('submit', function(e) {
         </div>
     </div>
    `;
-   const oldResult = document.querySelector('result-container');
+   const oldResult = document.querySelector('.result-container');
    if (oldResult) {
     oldResult.remove();
    }
