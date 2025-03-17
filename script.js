@@ -10,10 +10,10 @@ form.addEventListener('submit', function(e) {
     const age = parseFloat(document.querySelector('#age').value);
     const height = parseFloat(document.querySelector('#height').value);
     const weight = parseFloat(document.querySelector('#weight').value);
-    const activity = parseFloat(document.querySelector('#activity').value);
+    const steps = parseFloat(document.querySelector('#steps').value);
     const goal = document.querySelector('#goal').value;
 
-    if(!name||!gender||!age||!height||!weight||!activity||!goal) {
+    if(!name||!gender||!age||!height||!weight||!steps||!goal) {
         alert('Пожалуйста, заполните все поля');
         return;
     }
@@ -25,7 +25,7 @@ form.addEventListener('submit', function(e) {
     bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
    }
 
-   let tdee = bmr * activity;
+   let tdee = bmr * (steps + ... );
 
    let targetCalories, protein, fats, carbs;
 
