@@ -5,15 +5,16 @@ const form = document.querySelector('.nutrition-form');
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const name = document.querySelector('#name').value;
     const gender = document.querySelector('input[name="gender"]:checked').value;
     const age = parseFloat(document.querySelector('#age').value);
     const height = parseFloat(document.querySelector('#height').value);
     const weight = parseFloat(document.querySelector('#weight').value);
     const steps = parseFloat(document.querySelector('#steps').value);
+    const trainings = parseFloat(document.querySelector('#trainings').value);
+    const workActivity = parseFloat(document.querySelector('#workActivity').value);
     const goal = document.querySelector('#goal').value;
 
-    if(!name||!gender||!age||!height||!weight||!steps||!goal) {
+    if(!gender||!age||!height||!weight||!steps||!trainings||!workActivity||!goal) {
         alert('Пожалуйста, заполните все поля');
         return;
     }
@@ -25,26 +26,38 @@ form.addEventListener('submit', function(e) {
     bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
    }
 
-   let tdee = bmr * (steps + ... );
+   let tdee = bmr * (steps + trainings + workActivity);
 
    let targetCalories, protein, fats, carbs;
 
    switch(goal) {
-    case 'loss':
-        targetCalories = tdee - 500;
-        protein = weight * 2.2;
-        fats = weight * 1;
+    case 'extremeLoss':
+        targetCalories = tdee - 800;
+        protein = weight * 2.5;
+        fats = weight * 0.7;
         break;
 
-    case 'gain':
-        targetCalories = tdee + 300;
-        protein = weight * 2.5;
-        fats = weight * 1.2;
+    case 'healthyLoss':
+        targetCalories = tdee - 400;
+        protein = weight * 2.2;
+        fats = weight * 0.8;
         break;
 
     case 'maintain':
         targetCalories = tdee;
+        protein = weight * 2,5;
+        fats = weight * 1;
+        break;
+
+    case 'extremeGain':
+        targetCalories = tdee + 500;
         protein = weight * 2;
+        fats = weight * 1.2;
+        break;
+
+    case 'healthyGain':
+        targetCalories = tdee + 200;
+        protein = weight * 2.2;
         fats = weight * 1;
         break;
    }
@@ -53,7 +66,6 @@ form.addEventListener('submit', function(e) {
 
    const resultHTML = `
    <div class="result-container">
-   <h2>Результаты для ${name}</h2>
     <div class='result-section'>
         <h3>Основные показатели:</h3>
         <p>Базовый обмен веществ (сколько организм потребляет на поддержание жизнедеятельности): ${Math.round(bmr)} ккал</p>
