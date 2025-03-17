@@ -14,7 +14,7 @@ form.addEventListener('submit', function(e) {
     const workActivity = parseFloat(document.querySelector('#workActivity').value);
     const goal = document.querySelector('#goal').value;
 
-    if(!gender||!age||!height||!weight||!steps||!trainings||!workActivity||!goal) {
+    if(!gender||!age||!height||!weight||!steps||!trainings === undefined||!workActivity === undefined||!goal) {
         alert('Пожалуйста, заполните все поля');
         return;
     }
@@ -35,34 +35,37 @@ form.addEventListener('submit', function(e) {
         targetCalories = tdee - 800;
         protein = weight * 2.5;
         fats = weight * 0.7;
+        carbs = (targetCalories - (protein * 4 + fats * 9)) / 4;
         break;
 
     case 'healthyLoss':
         targetCalories = tdee - 400;
         protein = weight * 2.2;
         fats = weight * 0.8;
+        carbs = (targetCalories - (protein * 4 + fats * 9)) / 4;
         break;
 
     case 'maintain':
         targetCalories = tdee;
-        protein = weight * 2,5;
-        fats = weight * 1;
+        protein = weight * 2.5;
+        fats = weight * 1;  
+        carbs = (targetCalories - (protein * 4 + fats * 9)) / 4;
         break;
 
     case 'extremeGain':
         targetCalories = tdee + 500;
         protein = weight * 2;
         fats = weight * 1.2;
+        carbs = (targetCalories - (protein * 4 + fats * 9)) / 4;
         break;
 
     case 'healthyGain':
         targetCalories = tdee + 200;
         protein = weight * 2.2;
         fats = weight * 1;
+        carbs = (targetCalories - (protein * 4 + fats * 9)) / 4;
         break;
    }
-   
-   carbs = (targetCalories - (protein * 4 + fats * 9)) / 4;
 
    const resultHTML = `
    <div class="result-container">
