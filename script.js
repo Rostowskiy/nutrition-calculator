@@ -1,6 +1,7 @@
 'use strict'
 document.addEventListener('DOMContentLoaded', function () {
 const form = document.querySelector('.nutrition-form');
+const wrapper = document.querySelector('.wrapper');
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -68,8 +69,9 @@ form.addEventListener('submit', function(e) {
    }
 
    const resultHTML = `
-   <div class="result-container">
-    <div class='result-section'>
+   <div class="result-wrapper">
+    <div class='result-container'>
+        <div class='result-section'>
         <h3>Основные показатели:</h3>
         <p>Базовый обмен веществ (сколько организм потребляет на поддержание жизнедеятельности): ${Math.round(bmr)} ккал</p>
         <p>Ваша суточная норма с учетом активности: ${Math.round(tdee)} ккал</p>
@@ -80,13 +82,22 @@ form.addEventListener('submit', function(e) {
         <p>Белки: ${Math.round(protein)}г</p>
         <p>Жиры: ${Math.round(fats)}г</p>
         <p>Углеводы: ${Math.round(carbs)}г</p>
-        </div>
+    </div>
+    <button class='calculate-again-btn'>Рассчитать еще раз</button>
+    </div>
     </div>
    `;
-   const oldResult = document.querySelector('.result-container');
+
+   wrapper.style.display = 'none';
+   const oldResult = document.querySelector('.result-wrapper');
    if (oldResult) {
     oldResult.remove();
    }
-   form.insertAdjacentHTML('afterend', resultHTML);
+   document.body.insertAdjacentHTML('beforeend', resultHTML);
+   document.querySelector('.calculate-again-btn').addEventListener('click', function() {
+    document.querySelector('.result-wrapper').remove();
+    wrapper.style.display = 'block';
+    form.reset();
+});
 });
 });
