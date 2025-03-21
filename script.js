@@ -72,16 +72,16 @@ form.addEventListener('submit', function(e) {
    <div class="result-wrapper">
     <div class='result-container'>
         <div class='result-section'>
-        <h3>Основные показатели:</h3>
-        <p>Базовый обмен веществ (сколько организм потребляет на поддержание жизнедеятельности): ${Math.round(bmr)} ккал</p>
-        <p>Ваша суточная норма с учетом активности: ${Math.round(tdee)} ккал</p>
-        <p>Сколько нужно есть в зависимости от вашей цели: ${Math.round(targetCalories)} ккал</p>
+        <h2>Основные показатели:</h2>
+        <p>Базовый обмен веществ (сколько организм потребляет на поддержание жизнедеятельности): <strong>${Math.round(bmr)} ккал</strong></p>
+        <p>Ваша суточная норма с учетом активности: <strong>${Math.round(tdee)} ккал</strong></p>
+        <p>Сколько нужно есть в зависимости от вашей цели: <strong>${Math.round(targetCalories)} ккал</strong></p>
         </div>
     <div class='result-section'>
-        <h3>Рекомендация по БЖУ:</h3>
-        <p>Белки: ${Math.round(protein)}г</p>
-        <p>Жиры: ${Math.round(fats)}г</p>
-        <p>Углеводы: ${Math.round(carbs)}г</p>
+        <h2>Рекомендация по БЖУ:</h2>
+        <p>Белки: <strong>${Math.round(protein)}г</strong></p>
+        <p>Жиры: <strong>${Math.round(fats)}г</strong></p>
+        <p>Углеводы: <strong>${Math.round(carbs)}г</strong></p>
     </div>
     <button class='calculate-again-btn'>Рассчитать еще раз</button>
     </div>
